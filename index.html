@@ -1,148 +1,95 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shabiha Sultana Setu | Portfolio</title>
+  <meta name="description" content="Shabiha Sultana Setu — Georgia Tech MS Computer Science candidate. Projects in AI, healthcare analytics, UX, and software development.">
+  <title>Shabiha Sultana Setu | AI, Data & UX Portfolio</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #243247;
-      background: #f6f8fc;
-      line-height: 1.6;
-    }
-    header {
-      background: #192d4d;
-      color: white;
-      padding: 65px 20px;
-      text-align: center;
-    }
-    header h1 { margin-bottom: 8px; }
-    nav { margin-top: 22px; }
-    nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-    }
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-    section { margin: 35px 0; }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 18px;
-    }
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px #00000012;
-    }
-    .card a { color: #175dab; }
-    footer {
-      background: #192d4d;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    footer a { color: white; }
+    :root { --navy:#10223e; --ink:#1b2940; --muted:#56657a; --blue:#2266de; --line:#e4eaf2; --bg:#f6f8fc; --white:#fff; --mint:#d6f4ed; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
+    a { color:var(--blue); } a:focus-visible { outline:3px solid #ffb84d; outline-offset:4px; }
+    .wrap { width:min(1100px,calc(100% - 40px)); margin:auto; }
+    .nav { background:#fff; border-bottom:1px solid var(--line); }
+    .nav .wrap { display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:18px; }
+    .brand { font-weight:800; color:var(--navy); text-decoration:none; letter-spacing:-.03em; }
+    .navlinks { display:flex; flex-wrap:wrap; gap:20px; }
+    .navlinks a { color:#394b62; text-decoration:none; font-size:.93rem; font-weight:600; }
+    .hero { background:radial-gradient(circle at 85% 15%,#234f83 0%,transparent 35%), linear-gradient(130deg,#10223e,#193b63); color:white; padding:92px 0 84px; }
+    .eyebrow { display:inline-block; border:1px solid #6d8baa; border-radius:40px; padding:5px 13px; font-weight:650; font-size:.85rem; color:#cfe4ff; }
+    h1 { margin:18px 0 12px; font-size:clamp(2.5rem,6vw,4.4rem); line-height:1.12; letter-spacing:-.045em; max-width:810px; }
+    .hero p { color:#d6e3f5; font-size:1.12rem; max-width:690px; margin:0 0 28px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .btn { display:inline-block; padding:12px 19px; border-radius:9px; font-weight:750; text-decoration:none; }
+    .btn.primary { background:#fff; color:var(--navy); } .btn.secondary { border:1px solid #93b4d8; color:#fff; }
+    main section { padding:65px 0 8px; }
+    .section-head { margin-bottom:24px; }
+    .kicker { color:var(--blue); font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; font-weight:800; }
+    h2 { font-size:clamp(1.7rem,3vw,2.3rem); letter-spacing:-.035em; margin:7px 0 9px; line-height:1.2; }
+    .intro { color:var(--muted); max-width:780px; margin:0; }
+    .cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+    .card { background:var(--white); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 9px 28px rgba(16,34,62,.045); transition:transform .2s,box-shadow .2s; }
+    .card:hover { transform:translateY(-3px); box-shadow:0 14px 36px rgba(16,34,62,.11); }
+    .card-top { padding:24px; min-height:118px; display:flex; align-items:flex-end; }
+    .card-top.ai { background:linear-gradient(125deg,#dedbff,#eef0ff); }
+    .card-top.health { background:linear-gradient(125deg,#d1f1e7,#e5f7f5); }
+    .card-top.ux { background:linear-gradient(125deg,#ffe2cf,#fff0e6); }
+    .card-top.game { background:linear-gradient(125deg,#d6e7ff,#e8f1ff); }
+    .card-top span { font-size:2rem; font-weight:800; letter-spacing:-.04em; color:#1e3d5c; }
+    .card-body { padding:24px; }
+    h3 { font-size:1.22rem; line-height:1.3; margin:0 0 10px; }
+    .card p { color:var(--muted); margin:0 0 16px; }
+    .tags { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:17px; }
+    .tag { border:1px solid #dce5ef; background:#f8fafd; color:#445a74; padding:3px 9px; border-radius:30px; font-size:.78rem; font-weight:650; }
+    .project-link { font-weight:750; text-decoration:none; }
+    .skills { display:flex; flex-wrap:wrap; gap:10px; }
+    .skill { background:white; border:1px solid var(--line); padding:9px 13px; border-radius:9px; font-weight:600; color:#334b67; }
+    .about-grid { display:grid; grid-template-columns:1.7fr 1fr; gap:28px; }
+    .about-copy,.education { background:white; border:1px solid var(--line); border-radius:15px; padding:25px; }
+    .about-copy p { margin:0; color:var(--muted); }
+    .education strong { display:block; margin-bottom:6px; }
+    .education span { color:var(--muted); font-size:.92rem; }
+    .contact { margin:55px 0 70px; padding:35px; color:white; background:#183657; border-radius:17px; }
+    .contact h2 { margin:0 0 7px; }
+    .contact p { color:#d9e5f3; }
+    .contact a { color:white; font-weight:750; }
+    .contact-links { display:flex; flex-wrap:wrap; gap:20px; }
+    footer { border-top:1px solid var(--line); text-align:center; padding:24px; color:var(--muted); font-size:.88rem; }
+    @media(max-width:700px){ .hero{padding:70px 0} .cards,.about-grid{grid-template-columns:1fr} .nav .wrap{align-items:flex-start;flex-direction:column} main section{padding-top:47px} }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Shabiha Sultana Setu</h1>
-    <p>Computer Science | AI | Data Analytics | UX</p>
-    <p>Georgia Institute of Technology · Atlanta, GA</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I am a Georgia Tech M.S. Computer Science candidate
-        with coursework completed and graduation expected
-        in December 2026. My interests include artificial
-        intelligence, data analytics, human-computer
-        interaction, and software development.
-      </p>
+  <nav class="nav" aria-label="Main navigation"><div class="wrap">
+    <a class="brand" href="#home">Shabiha Sultana Setu</a>
+    <div class="navlinks"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+  </div></nav>
+  <header class="hero" id="home"><div class="wrap">
+    <span class="eyebrow">Georgia Tech · M.S. Computer Science</span>
+    <h1>Building thoughtful solutions with AI, data &amp; design.</h1>
+    <p>I'm Shabiha Sultana Setu, a computer science graduate student with interests in AI applications, healthcare analytics, human-computer interaction, and software development.</p>
+    <div class="actions"><a class="btn primary" href="#projects">Explore my projects →</a><a class="btn secondary" href="https://github.com/shabihasetu" target="_blank" rel="noopener noreferrer">View GitHub ↗</a></div>
+  </div></header>
+  <main class="wrap">
+    <section id="about"><div class="section-head"><span class="kicker">01 / About</span><h2>A little about me</h2></div>
+      <div class="about-grid"><div class="about-copy"><p>I have completed the coursework for my M.S. in Computer Science at Georgia Tech, with degree conferral expected in December 2026. My academic work spans LLM-powered learning experiences, healthcare data applications, requirements engineering, and usability-centered design. I enjoy connecting technical problem-solving with real user needs.</p></div>
+      <div class="education"><strong>Georgia Institute of Technology</strong><span>M.S. Computer Science<br>Coursework completed · December 2026 expected graduation<br>Atlanta, Georgia</span></div></div>
     </section>
-
-    <section id="projects">
-      <h2>Featured Projects</h2>
-      <div class="projects">
-
-        <div class="card">
-          <h3>CogTutor AI Study Assistant</h3>
-          <p>
-            AI-powered study assistant inspired by cognitive
-            science principles. Built with Python.
-          </p>
-          <a href="https://github.com/shabihasetu/CogTutor-AI-Study-Assistant-GT">
-            View Project
-          </a>
-        </div>
-
-        <div class="card">
-          <h3>FHIR Care Gap Dashboard</h3>
-          <p>
-            Healthcare analytics using Python, FastAPI,
-            PostgreSQL, Streamlit, and REST APIs.
-          </p>
-          <a href="https://github.com/shabihasetu/FHIR-Care-Gap-Dashboard">
-            View Project
-          </a>
-        </div>
-
-        <div class="card">
-          <h3>Achievement Goal Tracking</h3>
-          <p>
-            AI-assisted goal tracking application focused
-            on productivity and user-centered design.
-          </p>
-          <a href="https://github.com/shabihasetu/Achievement-goal-tracking-application">
-            View Project
-          </a>
-        </div>
-
-        <div class="card">
-          <h3>Roll-a-Ball Game</h3>
-          <p>
-            Unity game in which a player collects rotating
-            objects while tracking their score.
-          </p>
-          <a href="https://github.com/shabihasetu/Roll-a-Ball-Game">
-            View Project
-          </a>
-        </div>
-
+    <section id="projects"><div class="section-head"><span class="kicker">02 / Selected work</span><h2>Featured projects</h2><p class="intro">Four public repositories showcasing my work across artificial intelligence, data analytics, user experience, and game development.</p></div>
+      <div class="cards">
+        <article class="card"><div class="card-top ai"><span>AI / Learning</span></div><div class="card-body"><h3>CogTutor — AI Study Assistant</h3><p>A Georgia Tech cognitive science project exploring guided questioning and LLM-supported learning.</p><div class="tags"><span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">Cognitive Science</span></div><a class="project-link" href="https://github.com/shabihasetu/CogTutor-AI-Study-Assistant-GT" target="_blank" rel="noopener noreferrer">Explore repository ↗</a></div></article>
+        <article class="card"><div class="card-top health"><span>Data / Health</span></div><div class="card-body"><h3>FHIR Care Gap Dashboard</h3><p>A healthcare analytics application for processing FHIR data and identifying gaps in patient care.</p><div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span></div><a class="project-link" href="https://github.com/shabihasetu/FHIR-Care-Gap-Dashboard" target="_blank" rel="noopener noreferrer">Explore repository ↗</a></div></article>
+        <article class="card"><div class="card-top ux"><span>UX / Product</span></div><div class="card-body"><h3>Achievement Goal Tracking</h3><p>An AI-assisted application for personal goal tracking, designed with a user-centered approach.</p><div class="tags"><span class="tag">TypeScript</span><span class="tag">UX</span><span class="tag">Product Design</span></div><a class="project-link" href="https://github.com/shabihasetu/Achievement-goal-tracking-application" target="_blank" rel="noopener noreferrer">Explore repository ↗</a></div></article>
+        <article class="card"><div class="card-top game"><span>Game / Unity</span></div><div class="card-body"><h3>Roll-a-Ball Game</h3><p>A Unity game where players collect rotating objects and track their score.</p><div class="tags"><span class="tag">Unity</span><span class="tag">Game Development</span></div><a class="project-link" href="https://github.com/shabihasetu/Roll-a-Ball-Game" target="_blank" rel="noopener noreferrer">Explore repository ↗</a></div></article>
       </div>
     </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: shabihasultanasetu@gmail.com</p>
-      <p>
-        <a href="https://github.com/shabihasetu">GitHub</a>
-        |
-        <a href="https://www.linkedin.com/in/shabiha-sultana-setu-a21a641a2">
-          LinkedIn
-        </a>
-      </p>
+    <section id="skills"><div class="section-head"><span class="kicker">03 / Toolkit</span><h2>Skills &amp; technologies</h2></div>
+      <div class="skills"><span class="skill">Python</span><span class="skill">SQL</span><span class="skill">JavaScript</span><span class="skill">TypeScript</span><span class="skill">HTML / CSS</span><span class="skill">PostgreSQL</span><span class="skill">FastAPI</span><span class="skill">Streamlit</span><span class="skill">Power BI</span><span class="skill">UX Research</span><span class="skill">Figma</span><span class="skill">Git / GitHub</span><span class="skill">Linux</span><span class="skill">LLM Applications</span></div>
     </section>
+    <section id="contact" class="contact"><h2>Let's connect</h2><p>Interested in collaborating or discussing opportunities? I'd be glad to connect.</p><div class="contact-links"><a href="mailto:shabihasultanasetu@gmail.com">Email me ↗</a><a href="https://www.linkedin.com/in/shabiha-sultana-setu-a21a641a2" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/shabihasetu" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></section>
   </main>
-
-  <footer>
-    <p>Shabiha Sultana Setu | Portfolio</p>
-  </footer>
+  <footer>© 2026 Shabiha Sultana Setu · Built with GitHub Pages</footer>
 </body>
 </html>
